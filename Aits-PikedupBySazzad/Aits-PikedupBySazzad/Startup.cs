@@ -8,22 +8,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aits_PikedupBySazzad.DbContext;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aits_PikedupBySazzad
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<AitsPikedupDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("AitsPikedupDbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
