@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Aits_PikedupBySazzad.Models
 {
-    public class Customer
+    public class Product
     {
-        public ulong Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
-        public string ContactNo { get; set; }
+        public string Price { get; set; } 
 
     }
 }

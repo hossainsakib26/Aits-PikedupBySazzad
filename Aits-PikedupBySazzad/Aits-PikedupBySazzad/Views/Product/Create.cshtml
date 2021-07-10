@@ -1,0 +1,87 @@
+﻿@model Aits_PikedupBySazzad.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+    <div class="table-responsive col-md-8">
+        <table class="table table-responsive table-hover table-striped table-bordered">
+
+            <thead>
+                <tr>
+                    <th>#Sl</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    var products = (List<Product>)ViewBag.products;
+                    @if (products?.Count > 0)
+                    {
+                        int sl = 0;
+                    foreach (var product in products)
+                    {
+                    <tr>
+                        <td>@(++sl)</td>
+                        <td>@product.Id</td>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td><button class="btn btn-sm btn-primary">Add to cart</button></td>
+                    </tr>
+                    }
+                    }
+                    else
+                    {
+                    <tr>
+                        <td colspan="5">No Record Found!</td>
+                    </tr>
+                    }
+                    }
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+<div>
+    <a asp-action="Create">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
