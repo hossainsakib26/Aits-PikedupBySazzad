@@ -51,6 +51,8 @@ namespace Aits_PikedupBySazzad
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
+            //app.UseMvc();
 
             app.UseEndpoints(endpoints =>
             {
