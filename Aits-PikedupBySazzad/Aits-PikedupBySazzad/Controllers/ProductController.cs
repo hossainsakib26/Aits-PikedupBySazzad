@@ -21,7 +21,7 @@ namespace Aits_PikedupBySazzad.Controllers
         public IActionResult Create(Product model)
         {
             if (!ModelState.IsValid) return View(model);
-            model.Id = Guid.NewGuid();
+            model.Id = Database.Products.Count + 1;
             Database.Products.Add(model);
             ViewBag.products = Database.Products;
             return View(model);

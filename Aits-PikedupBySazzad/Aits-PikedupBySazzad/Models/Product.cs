@@ -7,7 +7,7 @@ namespace Aits_PikedupBySazzad.Models
 {
     public class Product
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Price { get; set; } 
 
