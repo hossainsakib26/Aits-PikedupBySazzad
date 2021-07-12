@@ -26,5 +26,10 @@ namespace Aits_PikedupBySazzad.Controllers
             ViewBag.products = Database.Products;
             return View(model);
         }
+
+        public IActionResult Edit()
+        {
+            return View();
+        }
     }
 }
